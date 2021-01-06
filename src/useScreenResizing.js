@@ -26,9 +26,10 @@ export default function useScreenResizing(breakpoints = {}) {
     ...defaultBreakpoints,
     ...breakpoints,
   };
+
   const isMiniMobile = width < miniMobile;
-  const isMobile = !isMiniMobile && width < mobile;
-  const isTablet = !isMobile && width < tablet;
+  const isMobile = width < mobile;
+  const isTablet = width < tablet;
   const isUsingPC = width >= tablet;
   const isNotebook = isUsingPC && width < screen;
   const isScreen = width >= screen;
