@@ -1,4 +1,4 @@
-import { useScreenResizing } from "./";
+import { useScreenResizing } from "../";
 import { renderHook } from "@testing-library/react-hooks";
 
 const resizeScreen = (width) => {

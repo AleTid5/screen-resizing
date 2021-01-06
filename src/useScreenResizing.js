@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useLayoutEffect, useReducer } from "react";
 import { defaultBreakpoints } from "./defaultBreakpoints";
 
 const initialState = () => ({
@@ -33,7 +33,7 @@ export default function useScreenResizing(breakpoints = {}) {
   const isNotebook = isUsingPC && width < screen;
   const isScreen = width >= screen;
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const handleResize = () =>
       dispatch({
         type: "changeScreenSize",
