@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# screen-resizing
+> **use-screen-resizing** is a custom hook that provides information about the device viewport.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![React](https://img.shields.io/badge/-React-20232a?logo=react&style=for-the-badge)
 
-## Available Scripts
+## Installation 🖥
 
-In the project directory, you can run:
+```bash
+npm i -S use-device-react
+```
 
-### `npm start`
+## Usage 💻
+Example of simple usage
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```jsx
+import { useScreenResizing } from "screen-resizing";
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+const Component = () => {
+    const { isMiniMobile, isMobile, isTablet, isNotebook, isScreen } = useScreenResizing();
 
-### `npm test`
+    return (<div>
+        {isMiniMobile && ...}
+        {isMobile && ...}
+        {isTablet && ...}
+        {isNotebook && ...}
+        {isScreen && ...}
+    </div>);
+};
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Breakpoints 🔮
+You can pass an object as parameter to override default values
 
-### `npm run build`
+```jsx
+import { useScreenResizing } from "screen-resizing";
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+const Component = () => {
+    const { isMobile, isTablet, isScreen } = useScreenResizing({ mobile: 350 });
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    return (<div>
+        {isMobile && ...}
+        {isTablet && ...}
+        {isScreen && ...}
+    </div>);
+};
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The default values are:
+```bash
+  {
+    miniMobile: 320,
+    mobile: 576,
+    tablet: 960,
+    screen: 1200,
+  }
+```
+> **MiniMobile** -> width < 320
+>
+> **Mobile** -> width >= 320 && width < 576
+>
+> **Tablet** -> width >= 576 && width < 960
+>
+> **Notebook** -> width >= 960 && width < 1200
+>
+> **Screen** -> width >= 1200
 
-### `npm run eject`
+## Features 🔥
+- Screen greater than: Function than receives a screen value parameter and compares if it's greater than the viewport width screen.
+- Screen greater or equal than: Function than receives a screen value parameter and compares if it's greater or equal than the viewport width screen.
+- Screen lesser than: Function than receives a screen value parameter and compares if it's lesser than the viewport width screen.
+- Screen lesser or equal than: Function than receives a screen value parameter and compares if it's lesser or equal than the viewport width screen.
+- Width: The viewport realtime width size.
+- Height: The viewport realtime height size.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```jsx
+import { useScreenResizing } from "screen-resizing";
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+const Component = () => {
+    const { screenGT,screenGTE, screenLT, screenLTE, width, height } = useScreenResizing({ mobile: 350 });
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    return (<div>...</div>);
+};
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License 🧙🏻‍♂️
+MIT © [AleTid5](https://github.com/AleTid5)
