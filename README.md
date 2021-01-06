@@ -6,7 +6,7 @@
 ## Installation 🖥
 
 ```bash
-npm i -S use-device-react
+npm i -S screen-resizing
 ```
 
 ## Usage 💻
