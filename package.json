@@ -1,5 +1,12 @@
 {
-  "name": "screen-resizing",
+  "name": "@AleTid5/screen-resizing",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AleTid5/screen-resizing"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "version": "1.1.0",
   "private": false,
   "babel": {
